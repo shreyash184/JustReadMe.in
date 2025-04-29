@@ -6,10 +6,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('Tab1')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
+
 
 <!doctype html>
 <html lang="en">
@@ -51,23 +52,18 @@ const posts = (await getCollection('blog')).sort(
 			}
 			ul li a {
 				display: block;
-				color: #BF00FF;
 			}
 			.title {
 				margin: 0;
 				color: rgb(var(--black));
 				line-height: 1;
-				transition: text-shadow 0.3s ease;
-			}
-			.title:hover {
-				text-shadow: 0 0 5px #BF00FF, 0 0 10px #BF00FF; /* Electric Purple glow */
 			}
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
 			}
-			ul li a h4,
-			ul li a .date {
+			ul li a:hover h4,
+			ul li a:hover .date {
 				color: rgb(var(--accent));
 			}
 			ul a:hover img {
@@ -98,7 +94,7 @@ const posts = (await getCollection('blog')).sort(
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
+								<a href={`/Tab1/${post.id}/`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
