@@ -5,18 +5,26 @@
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	--accent: #2337ff;  
+	--accent-dark: #000d8a;  
+	--black: 15, 18, 25;  
+	--gray: 96, 115, 159;  
+	--gray-light: 229, 233, 240;  
+	--gray-dark: 34, 41, 57;  
+	--gray-gradient: rgba(var(--gray-light), 50%), #fff;  
+	--box-shadow:  
+		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),  
+		0 16px 32px rgba(var(--gray), 33%);  
+	--background-color: #ffffff;  
+	--text-color: #000000; 
 }
 
+.dark {  
+	--background-color: #121212;  
+	--text-color: #ffffff;  
+	--gray-light: 34, 41, 57;  
+	--gray-dark: 229, 233, 240;  
+}  
 
 @font-face {
 	font-family: 'Atkinson';
@@ -32,20 +40,21 @@
 	font-style: normal;
 	font-display: swap;
 }
-body {
-	font-family: 'Atkinson', sans-serif;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	/* background: linear-gradient(var(--gray-gradient)) no-repeat; */
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	font-size: 20px;
-	line-height: 1.7;
-	background-color: #ffffff;
-  	color: #000000;
-}
+body {  
+	font-family: 'Atkinson', sans-serif;  
+	margin: 0;  
+	padding: 0;  
+	text-align: left;  
+	background-size: 100% 600px;  
+	word-wrap: break-word;  
+	overflow-wrap: break-word;  
+	font-size: 20px;  
+	line-height: 1.7;  
+	background-color: var(--background-color);  
+	color: var(--text-color);  
+}  
+
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
@@ -157,20 +166,18 @@ hr {
 	white-space: nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
-	body {
-	  background-color: #121212;
-	  color: #ffffff;
-  }
-}
+/* Update other components that need dark mode styling */  
+.dark a {  
+	color: #9cb3ff; /* a lighter blue for better contrast in dark mode */  
+}  
   
-  /* Optional: Update links, headers, etc. */
-  @media (prefers-color-scheme: dark) {
-	a {
-	  color: black;
-	}
-	header, footer {
-	  background-color: #1f1f1f;
-	}
-  }
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {  
+	color: white;  
+}  
+  
+.dark code {  
+	background-color: rgba(var(--gray-light), 0.3);  
+}
+
+
   
