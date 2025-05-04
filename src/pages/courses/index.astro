@@ -88,12 +88,18 @@ const posts = (await getCollection('courses')).sort(
 	</head>
 	<body>
 		<Header />
+		<p align="center">Comming soon...</p>
 		<main>
+		
 			<section>
 				<ul>
 					{
+						
+						<!--
 						posts.map((post) => (
 							<li>
+								
+								
 								<a href={`/courses/${post.id}/`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
@@ -101,8 +107,10 @@ const posts = (await getCollection('courses')).sort(
 										<FormattedDate date={post.data.pubDate} />
 									</p>
 								</a>
+								
 							</li>
 						))
+						-->
 					}
 				</ul>
 			</section>
