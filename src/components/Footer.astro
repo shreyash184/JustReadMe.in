@@ -46,7 +46,23 @@ const today = new Date();
 		color: #BDBDBD;
 		text-align: center;
 		border-top: 1px solid rgba(97, 97, 97, 0.2);
+		width: 100%;
+		
 	}
+	html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	main {
+  		flex: 1; /* This makes main take up all remaining space */
+  		width: 960px;
+  		margin: 0 auto; /* Optional: center it horizontally */
+	}
+	
 	.social-links {
 		display: flex;
 		justify-content: center;
