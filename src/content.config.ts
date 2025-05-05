@@ -15,9 +15,23 @@ const blog = defineCollection({
 	}),
 });
 
-const Tab1 = defineCollection({
+const courses = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/Tab1', pattern: '**/*.{md,mdx}' }),
+	loader: glob({ base: './src/content/courses', pattern: '**/*.{md,mdx}' }),
+	// Type-check frontmatter using a schema
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		// Transform string to Date object
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		heroImage: z.string().optional(),
+	}),
+});
+
+const mentorship = defineCollection({
+	// Load Markdown and MDX files in the `src/content/blog/` directory.
+	loader: glob({ base: './src/content/mentorship', pattern: '**/*.{md,mdx}' }),
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
@@ -31,5 +45,5 @@ const Tab1 = defineCollection({
 
 export const collections = { 
 	blog: blog,
-	Tab1: Tab1
+	mentorship: mentorship
 };

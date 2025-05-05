@@ -5,6 +5,8 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import blogs from '../../content/blog/blogs.json';
+import researchPapers from '../../content/blog/researchPapers.json';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -128,51 +130,54 @@ const today = new Date();
 					font-size: 1.563em;
 				}
 			}
+			.blog-title {
+				display: inline-block;
+				width: 100%;
+			}
 			
 		</style>
 	</head>
 	<body>
+		<>
 		<Header />
 			<main>  
 				<section> 
 					<h1><i>Blogs</i></h1> 
-					<p>Comming Soon ...</p>
-					<!-- 
-					<ul class="blog-list">  
-						{  
-							posts.map((post) => (  
-								<li>
-								<span class="date"><FormattedDate date={post.data.pubDate} /></span>
-								:
-								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-								</li>
-							))  
-						} 
-					--> 
-					</ul>  
+
+					<ul class="blog-list">
+					{
+						blogs.map((blog) => (
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={blog.url}><span class="blog-title">{blog.title}</span></a> ({blog.no_times_read})
+						</li>
+						</span>
+						))
+					}
+					</ul>
+  
 				</section>
+				<br><br>
 				<section> 
 					<h1><em>Engineering Papershelf</em></h1> 
-					<ul class="blog-list">  
-						{  
-							<!-- 
-							posts.map((post) => (  
-								<li>
-								<span class="date"><FormattedDate date={post.data.pubDate} /></span>
-								:
-								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-								</li>
-							)) 
-							-->
-
-							<li><span class="date"><FormattedDate date={today} /> </span>
+					<ul class="blog-list">
+					{
+						researchPapers.map((researchPaper) => (
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
 							:
-							<a href="https://www.rojo.me/content/files/2025/01/Whitepaper-Agents---Google.pdf"> Agents, Google</a>
-							</li>
-						}  
+							<a href={researchPaper.url}><span class="blog-title">{researchPaper.title}</span></a> ({researchPaper.no_times_read})
+						</li>
+						</span>
+						))
+					}
 					</ul>  
 				</section>  
 			</main>
 		<Footer/>
+		</>
 	</body>
 </html>
