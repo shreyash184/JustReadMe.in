@@ -8,13 +8,22 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import blogs from '../../content/blog/blogs.json';
 import researchPapers from '../../content/blog/researchPapers.json';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getCollection('blog');
+
+const titleToIndexMap = new Map();
+
+posts.forEach((post, index) => {
+  titleToIndexMap.set(post.title, index);
+});
+
+console.log(posts);
+const index = titleToIndexMap.get("Your Post Title");
+console.log(index); 
 
 // Get today's date
 const today = new Date();
 ---
+
 
 
 <!doctype html>
@@ -26,7 +35,7 @@ const today = new Date();
 				width: 960px;
 			}
 			
-			h1 {
+			h1, h2, h3, h4, h5 {
 				font-style: italic;
   				font-weight: normal;
 			}
@@ -176,6 +185,151 @@ const today = new Date();
 					}
 					</ul>  
 				</section>  
+				<br><br>
+				<h1>Design Patterns</h1>
+				<section style="margin-left: 5%;">
+					<h5>Creational Design Patterns</h5>
+					<ul class="blog-list">
+						<!-- Factory  -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[1].id}`}>
+								{posts[1].data.title}
+							</a>
+						</li>
+						<!-- Abstract Factory-->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[1].id}`}>
+								{posts[1].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Singleton -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[1].id}`}>
+								{posts[1].data.title}
+							</a>
+						</li>
+						<!-- Builder -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[1].id}`}>
+								{posts[1].data.title}
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section style="margin-left: 5%;">
+					<h5>Structural Design Patterns</h5>
+					<ul class="blog-list">
+						<!-- Facade -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[2].id}`}>
+								{posts[2].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Adapter -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[2].id}`}>
+								{posts[2].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Decorator -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[2].id}`}>
+								{posts[2].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Proxy -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[2].id}`}>
+								{posts[2].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Flyweight -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[2].id}`}>
+								{posts[2].data.title}
+							</a>
+						</li>
+						</span>
+					</ul>
+				</section>
+				<section style="margin-left: 5%;">
+					<h5>Behavioural Design Patterns</h5>
+					<ul class="blog-list">
+					    <!-- Strategy -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[3].id}`}>
+								{posts[3].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Observer -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[3].id}`}>
+								{posts[3].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- State -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[3].id}`}>
+								{posts[3].data.title}
+							</a>
+						</li>
+						</span>
+						<!-- Chain of Responsibility -->
+						<span>
+						<li>
+							<span class="date"><FormattedDate date={today} /></span>
+							:
+							<a href={`/blog/${posts[3].id}`}>
+								{posts[3].data.title}
+							</a>
+						</li>
+						</span>
+					</ul>
+				</section>
+				<br><br>
 			</main>
 		<Footer/>
 		</>
